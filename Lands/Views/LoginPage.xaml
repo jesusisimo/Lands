@@ -6,21 +6,17 @@
     BindingContext="{Binding Main, Source={StaticResource Locator}}"
     Title="Login">
     <ContentPage.Content>
-        <ScrollView>
+        <ScrollView
+            BindingContext="{Binding Login}">
             <StackLayout
-                Padding="10,20,10,5">
-                <Label
-                    FontAttributes="Bold"
-                    FontSize="Large"
-                    HorizontalOptions="Center"
-                    Text="Lands">
-                </Label>
+                Padding="5">
                 <Image
                     Source="logo_integra"
                     WidthRequest="200">
                 </Image>
                 <Grid
-                    Margin="0,20">
+                    VerticalOptions="CenterAndExpand"
+                    Margin="10,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2*"/>
@@ -28,29 +24,39 @@
                     <Label
                         Grid.Row="0"
                         Grid.Column="0"
-                        Text="E-Mail">
+                        Text="E-Mail"
+                        VerticalOptions="Center">
                     </Label>
                      <Entry
+                        Text="{Binding Email, Mode=TwoWay}"
                         Grid.Row="0"
                         Grid.Column="1"
                         Keyboard="Email"
-                        Placeholder="Enter your email...">
+                        Placeholder="Enter your email..."
+                        VerticalOptions="Center">
                     </Entry>
                     <Label
                         Grid.Row="1"
                         Grid.Column="0"
-                        Text="Password">
+                        Text="Password"
+                        VerticalOptions="Center">
                     </Label>
                     <Entry
                         Grid.Row="1"
                         Grid.Column="1"
                         IsPassword="true"
-                        Placeholder="Enter your password...">
+                        Placeholder="Enter your password..."
+                        Text="{Binding Password, Mode=TwoWay}"
+                        VerticalOptions="Center">
                     </Entry>
                 </Grid>
-                <ActivityIndicator>
+                <ActivityIndicator
+                    IsRunning="{Binding IsRunning, Mode=TwoWay}"
+                    VerticalOptions="CenterAndExpand">
                 </ActivityIndicator>
                 <StackLayout
+                    VerticalOptions="CenterAndExpand"
+                    Margin="10,0"
                     Orientation="Horizontal">
                     <Label
                         VerticalOptions="Center"
@@ -58,32 +64,41 @@
                         Text="Rememberme on this device">
                     </Label>
                     <Switch
+                        IsToggled="{Binding IsRemembered, Mode=TwoWay}"
                         HorizontalOptions="End">
                     </Switch>
                 </StackLayout>
                 <Label
+                    VerticalOptions="CenterAndExpand"
                     HorizontalOptions="Center"
                     Text="Forgot your password?"
                     TextColor="Blue">
                 </Label>
                 <StackLayout
-                    Margin="40,0">
+                    VerticalOptions="CenterAndExpand"
+                    Margin="40,0"
+                    Orientation="Horizontal">
                     <Button
                         Text="Login"
+                        Command="{Binding LoginCommand}"
                         BackgroundColor="Navy"
+                        IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
                         TextColor="White"
                         HeightRequest="46"
-                        BorderRadius="23">
+                        BorderRadius="23"
+                        HorizontalOptions="FillAndExpand">
                     </Button>
                     <Button
                         Text="Register"
                         BackgroundColor="Purple"
                         TextColor="White"
                          HeightRequest="46"
-                        BorderRadius="23">
+                        BorderRadius="23"
+                        HorizontalOptions="FillAndExpand">
                     </Button>
                 </StackLayout>
                 <StackLayout
+                    VerticalOptions="EndAndExpand"
                     HorizontalOptions="Center"
                     Orientation="Horizontal"
                     >
